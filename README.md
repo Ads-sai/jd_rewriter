@@ -1,102 +1,102 @@
 🚀 LLM-Powered Job Description Rewriter API 
 
-A FastAPI-based service that rewrites raw job descriptions into:
-Concise
-Inclusive
-SEO-Optimized versions
-using OpenAI's GPT API. It includes authentication, rate limiting, logging to MySQL, and a /metrics endpoint.
+ A FastAPI-based service that rewrites raw job descriptions into:
+ Concise
+ Inclusive
+ SEO-Optimized versions
+ using OpenAI's GPT API. It includes authentication, rate limiting, logging to MySQL, and a /metrics endpoint.
 
 📦 Features
-  * /rewrite: POST endpoint to rewrite job descriptions (JWT-protected, rate-limited).
+    * /rewrite: POST endpoint to rewrite job descriptions (JWT-protected, rate-limited).
 
-  * Prompt engineering layer with OpenAI.
+    * Prompt engineering layer with OpenAI.
 
-  * Logs to MySQL with latency and tone stats.
+    * Logs to MySQL with latency and tone stats.
 
-  * /metrics: Get API usage and latency insights.
+    * /metrics: Get API usage and latency insights.
 
-  * JWT-based authentication.
+    * JWT-based authentication.
 
-  * Rate limiting with slowapi.
+    * Rate limiting with slowapi.
 
 🛠 Installation
 
-  git clone https://github.com/your-username/jd_rewriter.git
+     git clone https://github.com/your-username/jd_rewriter.git
   
-  cd jd_rewriter
+     cd jd_rewriter
   
-  python -m venv venv
+     python -m venv venv
   
-  source venv/bin/activate  # or venv\Scripts\activate on Windows
+     source venv/bin/activate  # or venv\Scripts\activate on Windows
   
-  pip install -r requirements.txt
+     pip install -r requirements.txt
 
 
 ⚙️ Environment Setup
-*
-* Create a .env file:
 
-  OPENAI_API_KEY=your_openai_key
+   * Create a .env file:
 
-  DATABASE_URL=mysql+mysqlconnector://root:yourpassword@localhost:3306/jdlogs
+     OPENAI_API_KEY=your_openai_key
 
-  SECRET_KEY=your_jwt_secret
+     DATABASE_URL=mysql+mysqlconnector://root:yourpassword@localhost:3306/jdlogs
+
+     SECRET_KEY=your_jwt_secret
 
 ▶️ Running the App
+ 
+     * uvicorn app.main:app --reload
 
-  * uvicorn app.main:app --reload
-
-  * Access docs: http://localhost:8000/docs
+     * Access docs: http://localhost:8000/docs
 
 🔐 Authentication
 
- * Hit /login with:
+     * Hit /login with:
 
-  Username: admin
+     Username: admin
   
-  Password: admin123
-
-🛠 Usage
+     Password: admin123
 
 🔐 Login
 
-POST /login
+     POST /login
 
-Body (form data):
+     Body (form data):
 
-username=admin
+       username=admin
 
-password=admin123
+       password=admin123
 
 🔁 Rewrite JD
 
-POST /rewrite
+     POST /rewrite
 
-Headers: Authorization: Bearer <your_token>
+     Headers: Authorization: Bearer <your_token>
 
-Body (JSON):
+     Body (JSON):
 
-{
-  "jd_text": "Need a passionate frontend developer",
+       {
+        
+         "jd_text": "Need a passionate frontend developer",
   
-  "tone": "professional"
-}
-
-  
+         "tone": "professional"
+       
+       }
+       
+ 
 📊 Metrics
 
-GET /metrics
+     GET /metrics
 
-Returns:
+     Returns:
 
-Total requests
+       Total requests
 
-Average latency
+       Average latency
 
-Tone usage counts
+       Tone usage counts
 
 📌 Notes
 
-Make sure MySQL is running and database jdlogs is created.
+     Make sure MySQL is running and database jdlogs is created.
 
-Logs are stored in JDRewriteLog table.
+     Logs are stored in JDRewriteLog table.
