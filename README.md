@@ -22,17 +22,24 @@ using OpenAI's GPT API. It includes authentication, rate limiting, logging to My
 🛠 Installation
 
   git clone https://github.com/your-username/jd_rewriter.git
+  
   cd jd_rewriter
+  
   python -m venv venv
+  
   source venv/bin/activate  # or venv\Scripts\activate on Windows
+  
   pip install -r requirements.txt
 
 
 ⚙️ Environment Setup
+*
 * Create a .env file:
 
   OPENAI_API_KEY=your_openai_key
+
   DATABASE_URL=mysql+mysqlconnector://root:yourpassword@localhost:3306/jdlogs
+
   SECRET_KEY=your_jwt_secret
 
 ▶️ Running the App
@@ -46,8 +53,11 @@ using OpenAI's GPT API. It includes authentication, rate limiting, logging to My
  * Hit /login with:
 
   Username: admin
+  
   Password: admin123
   
 📊 Metrics
+  
   Access usage and latency via:
+  
   GET /metrics
