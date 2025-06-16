@@ -1,4 +1,4 @@
-🚀 LLM-Powered Job Description Rewriter API
+🚀 LLM-Powered Job Description Rewriter API 
 
 A FastAPI-based service that rewrites raw job descriptions into:
 Concise
@@ -55,9 +55,48 @@ using OpenAI's GPT API. It includes authentication, rate limiting, logging to My
   Username: admin
   
   Password: admin123
+
+🛠 Usage
+
+🔐 Login
+
+POST /login
+
+Body (form data):
+
+username=admin
+
+password=admin123
+
+🔁 Rewrite JD
+
+POST /rewrite
+
+Headers: Authorization: Bearer <your_token>
+
+Body (JSON):
+
+{
+  "jd_text": "Need a passionate frontend developer",
+  
+  "tone": "professional"
+}
+
   
 📊 Metrics
-  
-  Access usage and latency via:
-  
-  GET /metrics
+
+GET /metrics
+
+Returns:
+
+Total requests
+
+Average latency
+
+Tone usage counts
+
+📌 Notes
+
+Make sure MySQL is running and database jdlogs is created.
+
+Logs are stored in JDRewriteLog table.
